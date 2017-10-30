@@ -1,0 +1,21 @@
+<h1>Welcome to Tech Talent Store</h1>
+<p>Give us your money!</p>
+
+<div class="row">
+  <% @comics.each do |comic| %>
+    <div class="col-md-4">
+      <div class="well center-it">
+        <% if comic.image.url.nil? == false %>
+          <p><%= image_tag comic.image.url, class: "storefront-pics" %></p>
+        <% end %>
+        <h3><%= link_to comic.name, comic %></h3>
+        <p><%= number_to_currency comic.price %></p>
+        <p>
+          <a href="#">
+            <span class="glyphicon glyphicon-plus"></span> Quick Info
+          </a>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>

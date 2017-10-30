@@ -1,0 +1,52 @@
+<%= form_with(model: comic, local: true) do |form| %>
+  <% if comic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(comic.errors.count, "error") %> prohibited this comic from being saved:</h2>
+
+      <ul>
+      <% comic.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :comic_name %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :price %>
+    <%= form.text_field :price, id: :comic_price %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity, id: :comic_quantity %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :brand %>
+    <%= form.text_field :brand, id: :comic_brand %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :issue %>
+    <%= form.number_field :issue, id: :comic_issue %>
+  </div>
+
+    <div class="form-group">
+    <%= form.label :category_id %>
+    <%= form.select :category_id, @categories.collect { |c| [ c.name, c.id ]}, {include_blank: "Please select a category" } %>
+  </div>
+  
+  <div class="form-group">
+    <strong>Upload Comic Image: </strong>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
